@@ -1,5 +1,6 @@
 
 ---------- Emmet -----------
+
 "Emmet" is a popular productivity tool for web developers and front-end designers. 
 It is primarily used to speed up the process of writing HTML and CSS code. 
 Emmet provides a shorthand syntax that allows you to write code snippets in a more concise and efficient manner, which can greatly enhance your workflow.
@@ -8,6 +9,7 @@ With Emmet, you can write HTML and CSS code using abbreviations and then expand 
 For example, you can type "ul>li.item$*5" and expand it to generate an unordered list with five list items, where "$" is a placeholder that gets replaced with incremental numbers.
 
 ----------- Difference between a Library and Framework ----------
+  
     The term "library" and "framework" are often used in the context of software development. While both serve similar purposes of providing reusable code and facilitating development, there are differences in how they are designed and used:
 
 Library:

@@ -1,0 +1,34 @@
+--- npm ----
+
+npm is the world's largest software registry. Open source developers from every continent use npm to share and borrow packages, and many organizations use npm to manage private development as well.
+
+npm consists of three distinct components:
+
+the website
+the Command Line Interface (CLI)
+the registry
+
+npm uses ->
+
+1.  Adapt packages of code for your apps, or incorporate packages as they are.
+2.  Download standalone tools you can use right away.
+3.  Run packages without downloading using npx.
+4.  Share code with any npm user, anywhere.
+5.  Restrict code to specific developers.
+6.  Create organizations to coordinate package maintenance, coding, and developers.
+7.  Form virtual teams by using organizations.
+8.  Manage multiple versions of code and code dependencies.
+9.  Update applications easily when underlying code is updated.
+10. Discover multiple ways to solve the same puzzle.
+11. Find other developers who are working on similar problems and projects.
+
+
+
+---------------- caret vs tilde --------------------
+
+1. tilde -
+~version “Approximately equivalent to version”, will update you to all future patch versions, without incrementing the minor version. ~1.2.3 will use releases from 1.2.3 to <1.3.0.
+
+2. caret - 
+^version “Compatible with version”, will update you to all future minor/patch versions, without incrementing the major version. ^1.2.3 will use releases from 1.2.3 to <2.0.0.
+
