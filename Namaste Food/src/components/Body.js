@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
 import restaurantList from "../utils/mockData";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
+import useRestaurant from "../utils/useRestaurant";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [resList, setResList] = useState(restaurantList);
   const [filteredList, setFilteredList] = useState(restaurantList);
-  const [testAPI, settestAPI] = useState([]);
+  // const [testAPI, settestAPI] = useState([]);
   const [searchTxt, setSearchTxt] = useState("");
+
+  /*
   useEffect(() => {
     fetchRestaurantData();
   }, []);
-
   const fetchRestaurantData = async () => {
     const data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
@@ -19,6 +23,12 @@ const Body = () => {
     const jsonData = await data.json();
     settestAPI(jsonData);
   };
+  */
+  // the above lines will be abstracted out into the useRestaurant.js hook.
+
+  const testAPI = useRestaurant();
+
+  const onlineStatus = useOnlineStatus();
 
   const filterRestaurants = (searchText) => {
     const data = resList.filter((res) =>
@@ -27,6 +37,15 @@ const Body = () => {
 
     setFilteredList(data);
   };
+
+  if (onlineStatus === false) {
+    return (
+      <h1>Looks like you are offline, please check your internet connection</h1>
+    );
+  }
+
+  // this function is a higher order component as it takes RestaurantCard and gives back a new enhanced component RestaurantCardPromoted.
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
   return testAPI.length === 0 ? (
     <Shimmer />
@@ -51,6 +70,7 @@ const Body = () => {
           >
             Search
           </button>
+          {console.log(filteredList)}
         </div>
         <div className="filter">
           <button
@@ -80,7 +100,16 @@ const Body = () => {
       ) : (
         <div className="restaurant-cards">
           {filteredList.map((res) => (
-            <RestaurantCard key={res.info.resId} restaurant={res.info} />
+            <Link
+              to={res.cardAction.clickUrl.split("/")[2]}
+              key={res.info.resId}
+            >
+              {res.isPromoted === false ? (
+                <RestaurantCardPromoted restaurant={res.info} />
+              ) : (
+                <RestaurantCard restaurant={res.info} />
+              )}
+            </Link>
           ))}
         </div>
       )}

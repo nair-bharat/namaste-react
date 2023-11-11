@@ -1,3 +1,9 @@
+/*
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+*/
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -84,4 +90,9 @@
     width: 200px;
     height: 400px;
     margin: 10px;
+ }
+
+ .resturantMenu-info {
+   width: 400px;
+   height: 200px;
  }
